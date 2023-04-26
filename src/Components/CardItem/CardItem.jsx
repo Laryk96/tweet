@@ -18,15 +18,17 @@ import {
 import { editTweet } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 
-export const CardItem = ({ user }) => {
+export const CardItem = ({
+  user: { id, followers, avatar, isFollowed, tweets },
+}) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(
       editTweet(
-        user.isFollowed
-          ? { id, followers: user.followers - 1, isFollowed: false }
-          : { id, followers: user.followers + 1, isFollowed: true }
+        isFollowed
+          ? { id, followers: followers - 1, isFollowed: false }
+          : { id, followers: followers + 1, isFollowed: true }
       )
     );
   };
@@ -45,19 +47,12 @@ export const CardItem = ({ user }) => {
 
       <Line />
       <AvatarWrapper />
-      <Avatar
-        alt="user avatar"
-        src={`${user.avatar}`}
-        width="62px"
-        height="62px"
-      />
+      <Avatar alt="user avatar" src={`${avatar}`} width="62px" height="62px" />
 
-      <Text>{user.tweets} Tweets</Text>
-      <Text>
-        {new Intl.NumberFormat('en').format(user.followers)} followers
-      </Text>
-      <Btn type="button" isFollow={user.isFollowed} onClick={handleClick}>
-        {user.isFollowed ? 'Following' : 'Follow'}
+      <Text>{tweets} Tweets</Text>
+      <Text>{new Intl.NumberFormat('en').format(followers)} followers</Text>
+      <Btn type="button" isFollow={isFollowed} onClick={handleClick}>
+        {isFollowed ? 'Following' : 'Follow'}
       </Btn>
     </Wrapper>
   );
