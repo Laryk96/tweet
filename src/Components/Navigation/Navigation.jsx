@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux";
-import { NavLinkStyled, NavigationWrapper } from "./Navigation.styled";
-import { changePage } from "redux/slice";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLinkStyled, NavigationWrapper } from './Navigation.styled';
+import { changePage } from 'redux/slice';
 
 export const Navigation = () => {
   const dispatch = useDispatch();

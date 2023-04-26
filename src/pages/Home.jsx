@@ -1,4 +1,5 @@
-import { Wrapper } from "./Home.styled";
+import React from 'react';
+import { Wrapper } from './Home.styled';
 
 export default function Home() {
   return (

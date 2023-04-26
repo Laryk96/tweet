@@ -1,7 +1,9 @@
-import logo from "Images/Logo1x.png";
-import logo2x from "Images/Logo2x@2x.png";
-import picture from "Images/picture1x.png";
-import picture2x from "Images/picture2x@2x.png";
+import React from 'react';
+
+import logo from 'Images/Logo1x.png';
+import logo2x from 'Images/Logo2x@2x.png';
+import picture from 'Images/picture1x.png';
+import picture2x from 'Images/picture2x@2x.png';
 
 import {
   Wrapper,
@@ -12,11 +14,11 @@ import {
   Avatar,
   Text,
   Btn,
-} from "./CardItem.styled";
-import { editTweet } from "redux/operations";
-import { useDispatch } from "react-redux";
+} from './CardItem.styled';
+import { editTweet } from 'redux/operations';
+import { useDispatch } from 'react-redux';
 
-export const CardItem = ({ id, user, avatar }) => {
+export const CardItem = ({ user }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -45,18 +47,17 @@ export const CardItem = ({ id, user, avatar }) => {
       <AvatarWrapper />
       <Avatar
         alt="user avatar"
-        src={avatar}
-        // src={`${user.avatar}`}
+        src={`${user.avatar}`}
         width="62px"
         height="62px"
       />
 
       <Text>{user.tweets} Tweets</Text>
       <Text>
-        {new Intl.NumberFormat("en").format(user.followers)} followers
+        {new Intl.NumberFormat('en').format(user.followers)} followers
       </Text>
       <Btn type="button" isFollow={user.isFollowed} onClick={handleClick}>
-        {user.isFollowed ? "Following" : "Follow"}
+        {user.isFollowed ? 'Following' : 'Follow'}
       </Btn>
     </Wrapper>
   );

@@ -1,6 +1,6 @@
-import { Comment } from "react-loader-spinner";
-import { Overlay } from "./Loader.styled";
-
+import { Comment } from 'react-loader-spinner';
+import { Overlay } from './Loader.styled';
+import React from 'react';
 export const Loader = () => {
   return (
     <Overlay>
